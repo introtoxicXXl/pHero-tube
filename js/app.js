@@ -18,7 +18,7 @@ const displayCategory = (datas) => {
     const categoryContainer = document.getElementById('category-container');
     datas.forEach((data, index) => {
         const button = document.createElement("button");
-        button.classList = 'btn bg-gray-400 mr-5';
+        button.classList = 'btn btn-xs sm:btn-sm md:btn-md lg:btn bg-gray-400 mr-5';
         button.textContent = data.category;
         button.setAttribute("onclick", "loadData(" + data.category_id + ")");
         button.setAttribute("id", "button" + (index + 1));
@@ -29,18 +29,18 @@ const displayCategory = (datas) => {
             button.classList.add("active");
             loadData(data.category_id)
         }
-        
+
         categoryContainer.appendChild(button);
     });
 };
 
 const loadData = async (id) => {
+    loading(true);
     const res = await fetch(`https://openapi.programming-hero.com/api/videos/category/${id}`);
     const data = await res.json();
     displayData(data.data);
 }
 const displayData = datas => {
-    console.log(datas)
     const displayCard = document.getElementById('display-card');
     const noContent = document.getElementById('no-content');
     displayCard.textContent = '';
@@ -50,7 +50,6 @@ const displayData = datas => {
         noContent.classList.add('hidden');
     }
     datas.forEach(data => {
-        console.log(data)
         const div = document.createElement('div');
         div.classList = 'card bg-base-100 shadow-xl';
         div.innerHTML = `
@@ -74,7 +73,16 @@ const displayData = datas => {
         `;
         displayCard.appendChild(div);
     });
+    loading(false)
 }
 
-
+const loading = (isLoading) => {
+    const loader = document.getElementById('loader');
+    if (isLoading) {
+        loader.classList.remove('hidden');
+    }
+    else {
+        loader.classList.add('hidden');
+    }
+};
 categoryApi()

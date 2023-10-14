@@ -8,6 +8,12 @@
     <link rel="shortcut icon" href="image/fav.png" type="image/x-icon">
     <link href="https://cdn.jsdelivr.net/npm/daisyui@3.9.2/dist/full.css" rel="stylesheet" type="text/css" />
     <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .active {
+            background-color: #FF1F3D !important;
+            color: white;
+        }
+    </style>
 </head>
 
 <body>
@@ -17,11 +23,11 @@
                 <div class="navbar-start">
                     <img src="image/Logo.png" alt="">
                 </div>
-                <div class="navbar-center">
-                    <button class="btn bg-gray-300">Sort by view</button>
+                <div class="navbar-center ml-5">
+                    <button class="btn btn-xs sm:btn-sm md:btn-md lg:btn bg-gray-300">Sort by view</button>
                 </div>
                 <div class="navbar-end">
-                    <button class="btn bg-red-500 text-white">
+                    <button class="btn btn-xs sm:btn-sm md:btn-md lg:btn bg-red-500 text-white">
                         Blog
                     </button>
                 </div>
@@ -41,10 +47,17 @@
 
         <div class="flex justify-center text-center">
             <div class="hidden" id="no-content">
-                <figure class="w-full flex justify-center"><img class="flex justify-center" src="image/Icon.png" alt=""></figure>
+                <figure class="w-full flex justify-center"><img class="flex justify-center" src="image/Icon.png" alt="">
+                </figure>
                 <h1 class="text-[#171717] font-bold text-4xl">
                     Oops!! Sorry, There is no content here
                 </h1>
+            </div>
+        </div>
+
+        <div class="hidden" id="loader">
+            <div class="flex justify-center items-center h-56 ">
+                <progress class="progress w-56"></progress>
             </div>
         </div>
 
