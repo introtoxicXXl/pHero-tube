@@ -53,7 +53,12 @@ const displayData = datas => {
         const div = document.createElement('div');
         div.classList = 'card bg-base-100 shadow-xl';
         div.innerHTML = `
-        <figure><img src="${data.thumbnail}" alt="" /></figure>
+        <div class="relative">
+            <img src="${data.thumbnail}" alt="" />
+         <div class="">
+             <span id="content" class="p-2 text-white rounded text-[10px] absolute top-3/4 right-6" >${(data.others?.posted_date).length > 0 ? convertTime(data.others.posted_date) : ''}</span>
+         </div>
+        </div>
             <div class="flex mt-3 space-x-3 p-3">
                 <div class="avatar">
                         <div class="w-10 h-10 rounded-full">
@@ -85,4 +90,14 @@ const loading = (isLoading) => {
         loader.classList.add('hidden');
     }
 };
+
+const convertTime = (num) => {
+    const hours = Math.floor(num / 3600);
+    const seconds = num % 3600;
+    const minutes = Math.floor(seconds / 60);
+
+    return hours + " hrs " + minutes + " min ago";
+}
+
+
 categoryApi()
