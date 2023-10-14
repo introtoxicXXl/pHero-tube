@@ -1,3 +1,14 @@
+function handleButtonClick(buttonId) {
+    var buttons = document.querySelectorAll("button");
+    buttons.forEach(function (button) {
+        if (button.id === buttonId) {
+            button.classList.add("active");
+        } else {
+            button.classList.remove("active");
+        }
+    });
+}
+
 const categoryApi = async () => {
     const res = await fetch(`https://openapi.programming-hero.com/api/videos/categories`);
     const data = await res.json();
@@ -5,15 +16,23 @@ const categoryApi = async () => {
 }
 const displayCategory = (datas) => {
     const categoryContainer = document.getElementById('category-container');
-    datas.forEach(data => {
-        // console.log(data)
-        const div = document.createElement('div');
-        div.innerHTML = `
-        <button class="btn bg-gray-400 ml-5 cursor-pointer" onclick="loadData('${data.category_id}')">${data.category}</button>
-        `;
-        categoryContainer.appendChild(div);
+    datas.forEach((data, index) => {
+        const button = document.createElement("button");
+        button.classList = 'btn bg-gray-400 mr-5';
+        button.textContent = data.category;
+        button.setAttribute("onclick", "loadData(" + data.category_id + ")");
+        button.setAttribute("id", "button" + (index + 1));
+        button.addEventListener("click", function () {
+            handleButtonClick("button" + (index + 1));
+        });
+        if (index === 0) {
+            button.classList.add("active");
+            loadData(data.category_id)
+        }
+        
+        categoryContainer.appendChild(button);
     });
-}
+};
 
 const loadData = async (id) => {
     const res = await fetch(`https://openapi.programming-hero.com/api/videos/category/${id}`);
@@ -31,21 +50,31 @@ const displayData = datas => {
         noContent.classList.add('hidden');
     }
     datas.forEach(data => {
-        // console.log(data)
+        console.log(data)
         const div = document.createElement('div');
         div.classList = 'card bg-base-100 shadow-xl';
         div.innerHTML = `
         <figure><img src="${data.thumbnail}" alt="" /></figure>
-                <div class="card-body">
-                    <h2 class="card-title">${data.category_id}</h2>
-                    <p>If a dog chews shoes whose shoes does he choose?</p>
-                    <div class="card-actions justify-end">
-                        <button class="btn btn-primary">Buy Now</button>
-                    </div>
+            <div class="flex mt-3 space-x-3 p-3">
+                <div class="avatar">
+                        <div class="w-10 h-10 rounded-full">
+                            <img src="${data.authors[0].profile_picture}" />
+                        </div>
                 </div>
+                <div>
+                    <h2 class="font-bold text-base text-[#171717]">${data.title}</h2>
+                    <div class="flex">
+                        <p class="text-[#171717B2] text-sm">${data.authors[0].profile_name}</p>
+                        <img class="w-5 ml-2" src="${data.authors[0]?.verified ? 'image/fi_10629607.svg' : ''}">
+
+                        </div>
+                        <p class="text-[#171717B2] text-sm mt-2">${data.others.views} views</p>
+                </div>
+            </div>
         `;
         displayCard.appendChild(div);
-    })
+    });
 }
+
 
 categoryApi()
