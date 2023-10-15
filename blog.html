@@ -7,6 +7,7 @@
     <title>PHero Tube</title>
     <link rel="shortcut icon" href="image/fav.png" type="image/x-icon">
     <link href="https://cdn.jsdelivr.net/npm/daisyui@3.9.2/dist/full.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         .active {
@@ -37,8 +38,8 @@
 
         <div class="hero min-h-screen">
             <div class="hero-content flex-col lg:flex-row">
-                <img src="image/cover-3.png" class="lg:max-w-md md:max-w-full max-w-full rounded-lg" />
-                <div>
+                <img data-aos="fade-right" data-aos-duration="1000" src="image/cover-3.png" class="lg:max-w-md md:max-w-full max-w-full rounded-lg" />
+                <div data-aos="fade-left" data-aos-duration="1000">
                     <h1 class="text-5xl font-bold">Discuss the scope of var, let, and const</h1>
                     <div class="overflow-x-auto">
                         <table class="table">
@@ -95,8 +96,8 @@
 
         <div class="hero min-h-screen">
             <div class="hero-content flex-col lg:flex-row-reverse">
-                <img src="/image/null-undefined.webp" class="lg:max-w-md md:max-w-full max-w-full rounded-lg" />
-                <div>
+                <img src="/image/null-undefined.webp" data-aos="fade-left" data-aos-duration="1000" class="lg:max-w-md md:max-w-full max-w-full rounded-lg" />
+                <div data-aos="fade-right" data-aos-duration="1000" >
                     <h1 class="text-5xl font-bold">Tell us the use cases of undefined and null</h1>
                     <div class="overflow-x-auto">
                         <table class="table">
@@ -148,8 +149,8 @@
 
         <div class="hero min-h-screen">
             <div class="hero-content flex-col lg:flex-row">
-                <img src="/image/api.png" class="lg:max-w-md md:max-w-full max-w-full rounded-lg" />
-                <div>
+                <img src="/image/api.png" class="lg:max-w-md md:max-w-full max-w-full rounded-lg" data-aos="fade-right" data-aos-duration="1000"  />
+                <div data-aos="fade-left" data-aos-duration="1000" >
                     <h1 class="text-5xl font-bold">What do you mean by REST API?</h1>
                     <p class="py-6 text-justify">A REST (Representational State Transfer) API is a type of web service
                         that allows communication between different systems or applications using a set of predefined
@@ -162,7 +163,10 @@
 
     </main>
 
-
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+        AOS.init();
+    </script>
     <script src="js/app.js"></script>
 </body>
 
