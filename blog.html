@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PHero Tube</title>
+    <link rel="shortcut icon" href="image/fav.png" type="image/x-icon">
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@3.9.2/dist/full.css" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .active {
+            background-color: #FF1F3D !important;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <nav class="container mx-auto">
+            <div class="navbar bg-base-100">
+                <div class="navbar-start">
+                    <img src="image/Logo.png" class="cursor-pointer" alt="" onclick="travel('index')">
+                </div>
+                <div class="navbar-end">
+                    <button class="btn btn-xs sm:btn-sm md:btn-md lg:btn bg-red-500 text-white">
+                        Blog
+                    </button>
+                </div>
+            </div>
+        </nav>
+
+    </header>
+    <hr class="container mx-auto my-5">
+    <main class="container mx-auto">
+
+        <div class="hero min-h-screen">
+            <div class="hero-content flex-col lg:flex-row">
+                <img src="image/cover-3.png" class="lg:max-w-md md:max-w-full max-w-full rounded-lg" />
+                <div>
+                    <h1 class="text-5xl font-bold">Discuss the scope of var, let, and const</h1>
+                    <div class="overflow-x-auto">
+                        <table class="table">
+                            <!-- head -->
+                            <thead>
+                                <tr>
+                                    <th></th>
+                                    <th>var</th>
+                                    <th>let</th>
+                                    <th>const</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <!-- row 1 -->
+                                <tr>
+                                    <th>1</th>
+                                    <td>Variables declared with var have function scope or global scope, depending on
+                                        where they are declared.</td>
+                                    <td>Variables declared with let have block scope. They are only accessible within
+                                        the block in which they are defined, whether it's a loop, an if statement, or
+                                        any other block.</td>
+                                    <td>Variables declared with const are block-scoped, just like variables declared
+                                        with let.</td>
+                                </tr>
+                                <!-- row 2 -->
+                                <tr>
+                                    <th>2</th>
+                                    <td>If a variable is declared inside a function, it is only accessible within that
+                                        function.</td>
+                                    <td>They are not accessible before they are declared a concept known as the
+                                        "temporal dead zone."</td>
+                                    <td>The value of a const variable cannot be re-assigned once it is assigned.</td>
+                                </tr>
+                                <!-- row 3 -->
+                                <tr>
+                                    <th>3</th>
+                                    <td>var is also subject to hoisting, meaning that the variable can be declared after
+                                        it is used within the function, and it will still be accessible</td>
+                                    <td>Redefining a variable with the same name in the same scope will result in an
+                                        error.</td>
+                                    <td>For objects and arrays, the properties and elements of the object or array can
+                                        be modified..</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <p class="mt-3">In modern JavaScript development, it's generally recommended to use let and
+                            const over var due to their more predictable and less error-prone scoping behavior. Use
+                            const when the value of a variable should not be changed, and use let when the value may
+                            change.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="hero min-h-screen">
+            <div class="hero-content flex-col lg:flex-row-reverse">
+                <img src="/image/null-undefined.webp" class="lg:max-w-md md:max-w-full max-w-full rounded-lg" />
+                <div>
+                    <h1 class="text-5xl font-bold">Tell us the use cases of undefined and null</h1>
+                    <div class="overflow-x-auto">
+                        <table class="table">
+                            <!-- head -->
+                            <thead>
+                                <tr>
+                                    <th></th>
+                                    <th>NULL</th>
+                                    <th>UNDEFINED</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <!-- row 1 -->
+                                <tr>
+                                    <th>1</th>
+                                    <td>Null represents the intentional absence of any object value. It is explicitly
+                                        assigned to a variable to indicate the absence of a value.</td>
+                                    <td>In JavaScript, undefined is a variable that has not been assigned a value. It is
+                                        the default initial value for variables.</td>
+                                </tr>
+                                <!-- row 2 -->
+                                <tr>
+                                    <th>2</th>
+                                    <td>It is often used as a placeholder when an object doesn't have a value assigned
+                                        but is expected to eventually hold one.</td>
+                                    <td>It is also the default return value of functions that do not explicitly return
+                                        anything.</td>
+                                </tr>
+                                <!-- row 3 -->
+                                <tr>
+                                    <th>3</th>
+                                    <td>Commonly used to explicitly indicate the absence of a value or to reset a
+                                        variable.</td>
+                                    <td>Used when a variable has been declared but not assigned a value.</td>
+                                </tr>
+                                <!-- row 4 -->
+                                <tr>
+                                    <th>4</th>
+                                    <td>Useful when you want to clear the value of a variable that was previously
+                                        assigned an object or a value.</td>
+                                    <td>It can indicate a missing property in an object.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="hero min-h-screen">
+            <div class="hero-content flex-col lg:flex-row">
+                <img src="/image/api.png" class="lg:max-w-md md:max-w-full max-w-full rounded-lg" />
+                <div>
+                    <h1 class="text-5xl font-bold">What do you mean by REST API?</h1>
+                    <p class="py-6 text-justify">A REST (Representational State Transfer) API is a type of web service
+                        that allows communication between different systems or applications using a set of predefined
+                        resources and HTTP methods (such as GET, POST, PUT, DELETE). It is a widely used architecture
+                        pattern for building web services and can be used to expose application functionality to
+                        external clients.</p>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+
+    <script src="js/app.js"></script>
+</body>
+
+</html>

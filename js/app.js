@@ -100,7 +100,7 @@ const convertTime = (num) => {
     return hours + " hrs " + minutes + " min ago";
 }
 const sortView = () => {
-    
+
     const displayCard = document.getElementById('display-card');
     const cards = Array.from(displayCard.children);
 
@@ -113,5 +113,13 @@ const sortView = () => {
     displayCard.textContent = '';
     cards.forEach(card => displayCard.appendChild(card));
 };
+
+const travel = (id) => {
+    if (id === 'index') {
+        window.location.href = 'index.html';
+    } else if (id === 'blog') {
+        window.location.href = 'blog.html';
+    }
+}
 
 categoryApi()
