@@ -16,6 +16,7 @@ const categoryApi = async () => {
 }
 const displayCategory = (datas) => {
     const categoryContainer = document.getElementById('category-container');
+    const button5 = document.getElementById('button5');
     datas.forEach((data, index) => {
         const button = document.createElement("button");
         button.classList = 'btn btn-xs sm:btn-sm md:btn-md lg:btn bg-gray-400 mr-5';
@@ -29,7 +30,6 @@ const displayCategory = (datas) => {
             button.classList.add("active");
             loadData(data.category_id)
         }
-
         categoryContainer.appendChild(button);
     });
 };
@@ -38,6 +38,7 @@ const loadData = async (id) => {
     loading(true);
     const res = await fetch(`https://openapi.programming-hero.com/api/videos/category/${id}`);
     const data = await res.json();
+    sortView(data.data);
     displayData(data.data);
 }
 const displayData = datas => {
@@ -72,7 +73,7 @@ const displayData = datas => {
                         <img class="w-5 ml-2" src="${data.authors[0]?.verified ? 'image/fi_10629607.svg' : ''}">
 
                         </div>
-                        <p class="text-[#171717B2] text-sm mt-2">${data.others.views} views</p>
+                        <p class="views text-[#171717B2] text-sm mt-2">${data.others.views} views</p>
                 </div>
             </div>
         `;
@@ -98,6 +99,19 @@ const convertTime = (num) => {
 
     return hours + " hrs " + minutes + " min ago";
 }
+const sortView = () => {
+    
+    const displayCard = document.getElementById('display-card');
+    const cards = Array.from(displayCard.children);
 
+    cards.sort((a, b) => {
+        const viewsA = parseInt(a.querySelector('.views').textContent.split('k')[0]);
+        const viewsB = parseInt(b.querySelector('.views').textContent.split('k')[0]);
+        return viewsB - viewsA;
+    });
+
+    displayCard.textContent = '';
+    cards.forEach(card => displayCard.appendChild(card));
+};
 
 categoryApi()
